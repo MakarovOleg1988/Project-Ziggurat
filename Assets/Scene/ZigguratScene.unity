@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 20706862}
   - component: {fileID: 20706861}
   - component: {fileID: 20706860}
+  - component: {fileID: 20706863}
   m_Layer: 0
   m_Name: Point 3
   m_TagString: Untagged
@@ -351,6 +352,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20706858}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &20706863
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20706858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &49645944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,6 +838,7 @@ GameObject:
   - component: {fileID: 146352144}
   - component: {fileID: 146352143}
   - component: {fileID: 146352142}
+  - component: {fileID: 146352145}
   m_Layer: 0
   m_Name: Point 2
   m_TagString: Untagged
@@ -908,6 +923,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146352140}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &146352145
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146352140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &184392333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1225,7 +1253,9 @@ MonoBehaviour:
   - {fileID: 1699256438}
   - {fileID: 626415872}
   _respawnGate: 1
-  _timebetweenspawn: 5
+  _timebetweenspawnRed: 0
+  _timebetweenspawnGreen: 10
+  _timebetweenspawnBlue: 0
 --- !u!1001 &352162313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3165,7 +3195,7 @@ Transform:
   - {fileID: 1283446684}
   - {fileID: 1203656942}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1010354913
 BoxCollider:
@@ -3344,7 +3374,7 @@ Transform:
   - {fileID: 146352141}
   - {fileID: 20706859}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1117690472
 PrefabInstance:
@@ -3752,7 +3782,9 @@ MonoBehaviour:
   - {fileID: 1699256438}
   - {fileID: 626415872}
   _respawnGate: 0
-  _timebetweenspawn: 5
+  _timebetweenspawnRed: 10
+  _timebetweenspawnGreen: 0
+  _timebetweenspawnBlue: 0
 --- !u!1001 &1247415629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3915,7 +3947,7 @@ Transform:
   - {fileID: 994773999}
   - {fileID: 93308126}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1279208667
 PrefabInstance:
@@ -4670,7 +4702,7 @@ Transform:
   m_Children:
   - {fileID: 532899570}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1503877854
 GameObject:
@@ -5036,7 +5068,7 @@ Transform:
   - {fileID: 1957779541}
   - {fileID: 1911908156}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &1617742200
 BoxCollider:
@@ -5215,7 +5247,7 @@ Transform:
   - {fileID: 1699256445}
   - {fileID: 626415879}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676073299 stripped
 GameObject:
@@ -5385,6 +5417,7 @@ GameObject:
   - component: {fileID: 1735542122}
   - component: {fileID: 1735542121}
   - component: {fileID: 1735542120}
+  - component: {fileID: 1735542123}
   m_Layer: 0
   m_Name: Point 1
   m_TagString: Untagged
@@ -5469,6 +5502,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735542118}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1735542123
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735542118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1743848734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6086,7 +6132,9 @@ MonoBehaviour:
   - {fileID: 1699256438}
   - {fileID: 626415872}
   _respawnGate: 2
-  _timebetweenspawn: 5
+  _timebetweenspawnRed: 0
+  _timebetweenspawnGreen: 0
+  _timebetweenspawnBlue: 10
 --- !u!1001 &1957779540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6432,7 +6480,7 @@ Transform:
   - {fileID: 1709068049}
   - {fileID: 348382297}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &2096191720
 BoxCollider:

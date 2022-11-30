@@ -9,7 +9,9 @@ namespace Ziggurat
         [SerializeField] public Transform[] _PointRespawn;
         [SerializeField] public GameObject[] _knigth;
         public RespawnGate _respawnGate;
-        [SerializeField] private float _timebetweenspawn;
+        [SerializeField] private float _timebetweenspawnRed;
+        [SerializeField] private float _timebetweenspawnGreen;
+        [SerializeField] private float _timebetweenspawnBlue;
 
         private void Update()
         {
@@ -22,40 +24,33 @@ namespace Ziggurat
             {
                 case RespawnGate.Red:
                     {
-                        if (_timebetweenspawn <= 0)
+                        if (_timebetweenspawnRed <= 0)
                         {
-                            for (int i = 0; i < _knigth.Length; i++)
-                            {
-                                Instantiate(_knigth[i], _PointRespawn[0].position, Quaternion.identity);
-                                _knigth[i].SetActive(true);
-                                _timebetweenspawn = 5f;
-                            }
+                            Instantiate(_knigth[0], _PointRespawn[0].position, Quaternion.identity);
+                            _knigth[0].SetActive(true);
+                            _timebetweenspawnRed = 10f;
                         }
-                        else _timebetweenspawn -= Time.deltaTime;
+                        else _timebetweenspawnRed -= Time.deltaTime;
                     }; break;
                 case RespawnGate.Green:
                     {
-                        if (_timebetweenspawn <= 0)
+                        if (_timebetweenspawnGreen <= 0)
                         {
-                            for (int i = 0; i < _knigth.Length; i++)
-                            {
-                                Instantiate(_knigth[i], _PointRespawn[1].position, Quaternion.identity);
-                                _timebetweenspawn = 5f;
-                            }
+                            Instantiate(_knigth[1], _PointRespawn[1].position, Quaternion.identity);
+                            _knigth[1].SetActive(true);
+                            _timebetweenspawnGreen = 10f;
                         }
-                        else _timebetweenspawn -= Time.deltaTime;
+                        else _timebetweenspawnGreen -= Time.deltaTime;
                     }; break;
                 case RespawnGate.Blue:
                     {
-                        if (_timebetweenspawn <= 0)
+                        if (_timebetweenspawnBlue <= 0)
                         {
-                            for (int i = 0; i < _knigth.Length; i++)
-                            {
-                                Instantiate(_knigth[i], _PointRespawn[2].position, Quaternion.identity);
-                                _timebetweenspawn = 5f;
-                            }
+                            Instantiate(_knigth[2], _PointRespawn[2].position, Quaternion.identity);
+                            _knigth[2].SetActive(true);
+                            _timebetweenspawnBlue = 10f;
                         }
-                        else _timebetweenspawn -= Time.deltaTime;
+                        else _timebetweenspawnBlue -= Time.deltaTime;
                     }; break;
             }
         }

@@ -23,14 +23,14 @@ namespace Ziggurat
 		/// Вызывать для всех прочих, кроме хотьбы анимаций
 		/// </summary>
 		/// <param name="key"></param>
-		public void StartAnimation(string key)
+		public void StartAnimation(string key, float valueX)
 		{
-			_animator.SetFloat("Movement", 0f);
+			_animator.SetFloat("Movement", valueX);
 			_animator.SetTrigger(key);
 		}
 
 		//Вызывается внутри анимаций для переключения атакующего коллайдера
-		private void AnimationEventCollider_UnityEditor(int isActivity)
+		public void AnimationEventCollider_UnityEditor(int isActivity)
 		{
 			_collider.enabled = isActivity != 0;
 		}
