@@ -1,51 +1,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Linq;
 using System.Collections;
 
 namespace Ziggurat
 {
-    public class EnemyMovement : UnitEnvironment
+    public class EnemyMovement : MonoBehaviour
     {
+
         NavMeshAgent _agent;
         private int _id;
-        private Transform enemy;
+        [SerializeField] private Transform[] _knigth;
         [SerializeField] private List<Transform> _targets;
         protected float valueX;
-        private float _attackRange = 2f;
-        private float _chaseRange = 10f;
+        private float _chaseRange = 20f;
 
         private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
-            _animator = GetComponent<Animator>();
+            UnitEnvironment._animator = GetComponent<Animator>();
 
-            StartCoroutine(MoveKnight(_id, enemy));
+            StartCoroutine(MoveKnight(_id));
         }
 
-        private Transform _enemy()
+        private void Update()
         {
-            Transform enemy = GameObject.FindObjectOfType<Animator>().transform;
-            return enemy;
+            Chase();
         }
 
-        private IEnumerator MoveKnight(int _id, Transform _enemy)
+        private IEnumerator MoveKnight(int _id)
         {
-            if (_agent.remainingDistance == _agent.stoppingDistance)
+            if (_agent.remainingDistance <= _agent.stoppingDistance)
             {
                 _id = Random.Range(0, _targets.Count);
-                Moving(1);
+                UnitEnvironment.Moving(1);
                 _agent.SetDestination(_targets[_id].position);
             }
-
             yield return new WaitForSeconds(2f);
-
-            _agent.SetDestination(enemy.position);
-            float distance = Vector3.Distance(_agent.transform.position, enemy.position);
-
-            if (distance < _attackRange) Moving(0);
         }
 
+        public KnigthType knigthType;
+
+        private void Chase()
+        {
+            switch (knigthType)
+            {
+                case KnigthType.Red:
+                    {
+                        float distance = Vector3.Distance(transform.position, _knigth[1].position);
+                        float distance2 = Vector3.Distance(transform.position, _knigth[2].position);
+                        if (distance < _chaseRange || distance2 < _chaseRange) _agent.SetDestination(_knigth[Random.Range(1, 2)].position);
+                    }; break;
+                case KnigthType.Green:
+                    {
+                        float distance = Vector3.Distance(transform.position, _knigth[0].position);
+                        float distance2 = Vector3.Distance(transform.position, _knigth[2].position);
+                        if (distance < _chaseRange || distance2 < _chaseRange) _agent.SetDestination(_knigth[Random.Range(0, 2)].position);
+                    }; break;
+                case KnigthType.Blue:
+                    {
+                        float distance = Vector3.Distance(transform.position, _knigth[0].position);
+                        float distance2 = Vector3.Distance(transform.position, _knigth[1].position);
+                        if (distance < _chaseRange || distance2 < _chaseRange) _agent.SetDestination(_knigth[Random.Range(0, 1)].position);
+                    }; break;
+            }
+        }
     }
 }

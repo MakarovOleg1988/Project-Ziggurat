@@ -8,29 +8,27 @@ namespace Ziggurat
 	[RequireComponent(typeof(Animator))]
 	public class UnitEnvironment : MonoBehaviour
 	{
-		[SerializeField] protected Animator _animator;
+		[SerializeField] public static Animator _animator;
 		[SerializeField] private Collider _collider;
 
-
-		public event EventHandler OnEndAnimation;
-
-        public void Moving(float valueX)
+        public static void Moving(float valueX)
 		{
 			_animator.SetFloat("Movement", valueX);
 		}
 
-		/// <summary>
-		/// Вызывать для всех прочих, кроме хотьбы анимаций
-		/// </summary>
-		/// <param name="key"></param>
-		public void StartAnimation(string key, float valueX)
+		public static void FastAttack()
 		{
-			_animator.SetFloat("Movement", valueX);
-			_animator.SetTrigger(key);
+			_animator.SetTrigger("Fast");
+		}
+
+		public void Die(string key)
+		{
+			_animator.SetTrigger("Die");
+			Destroy(this);
 		}
 
 		//Вызывается внутри анимаций для переключения атакующего коллайдера
-		public void AnimationEventCollider_UnityEditor(int isActivity)
+		private void AnimationEventCollider_UnityEditor(int isActivity)
 		{
 			_collider.enabled = isActivity != 0;
 		}
@@ -40,7 +38,6 @@ namespace Ziggurat
 		{
 			//В конце анимации смерти особый аргумент и своя логика обработки
 			if (result == "die") Destroy(gameObject);
-			OnEndAnimation.Invoke(null, null);
 		}
 	}
 }

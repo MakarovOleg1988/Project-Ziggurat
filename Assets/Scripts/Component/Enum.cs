@@ -24,4 +24,11 @@ namespace Ziggurat
 	Green = 1,
 	Blue = 2
 	}
+
+	public enum KnigthType : byte
+	{
+		Red = 0,
+		Green = 1,
+		Blue = 2
+	}
 }

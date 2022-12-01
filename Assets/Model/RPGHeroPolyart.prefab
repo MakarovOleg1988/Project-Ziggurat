@@ -2294,8 +2294,8 @@ GameObject:
   - component: {fileID: 8067314749199957198}
   - component: {fileID: 7971482898358105655}
   - component: {fileID: 7971482898358105654}
-  - component: {fileID: 7971482898358105659}
   - component: {fileID: 4363635115276435457}
+  - component: {fileID: 7971482898358105659}
   - component: {fileID: 4094919207193656806}
   m_Layer: 0
   m_Name: RPGHeroPolyart
@@ -2371,20 +2371,6 @@ CapsuleCollider:
   m_Height: 2.03
   m_Direction: 1
   m_Center: {x: 0, y: 0.99, z: 0}
---- !u!114 &7971482898358105659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7973307358779964746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496352f3a2cdaf14499e6df6865143eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 8067314749199957198}
-  _collider: {fileID: 7971482898358105656}
 --- !u!195 &4363635115276435457
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2407,6 +2393,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7971482898358105659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973307358779964746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496352f3a2cdaf14499e6df6865143eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 8067314749199957198}
+  _collider: {fileID: 7971482898358105656}
 --- !u!114 &4094919207193656806
 MonoBehaviour:
   m_ObjectHideFlags: 0
