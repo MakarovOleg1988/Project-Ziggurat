@@ -28,6 +28,7 @@ namespace Ziggurat
                         {
                             Instantiate(_knigth[0], _PointRespawn[0].position, Quaternion.identity);
                             _knigth[0].SetActive(true);
+                           
                             _timebetweenspawnRed = 10f;
                         }
                         else _timebetweenspawnRed -= Time.deltaTime;

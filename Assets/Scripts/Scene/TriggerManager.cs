@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ziggurat
 {
+    [RequireComponent(typeof(SwordComponent))]
     public class TriggerManager : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        public void OnTriggerEnter(Collider other)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            if (other.GetComponents<SwordComponent>() == null) return;
+            {
+                EnemyAttack._health--;
+                Debug.Log("Попал");
+            }
         }
     }
 }

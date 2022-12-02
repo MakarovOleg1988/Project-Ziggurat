@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ziggurat
 {
     public class EnemyAttack : MonoBehaviour
     {
-        private float _attackRange = 4f;
-        [SerializeField] private int _health;
+        public static float _attackRange = 4f;
+        [SerializeField] public static int _health;
         [SerializeField] private float _Attackdistance;
 
         private void Start()
