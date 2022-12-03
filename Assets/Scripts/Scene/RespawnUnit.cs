@@ -9,9 +9,11 @@ namespace Ziggurat
         [SerializeField] public Transform[] _PointRespawn;
         [SerializeField] public GameObject[] _knigth;
         public RespawnGate _respawnGate;
+
         [SerializeField] private float _timebetweenspawnRed;
         [SerializeField] private float _timebetweenspawnGreen;
         [SerializeField] private float _timebetweenspawnBlue;
+        public bool _stopRespawn = false;
 
         private void Update()
         {
@@ -24,7 +26,7 @@ namespace Ziggurat
             {
                 case RespawnGate.Red:
                     {
-                        if (_timebetweenspawnRed <= 0)
+                        if (_timebetweenspawnRed <= 0 && _stopRespawn == false)
                         {
                             Instantiate(_knigth[0], _PointRespawn[0].position, Quaternion.identity);
                             _knigth[0].SetActive(true);
@@ -35,7 +37,7 @@ namespace Ziggurat
                     }; break;
                 case RespawnGate.Green:
                     {
-                        if (_timebetweenspawnGreen <= 0)
+                        if (_timebetweenspawnGreen <= 0 && _stopRespawn == false)
                         {
                             Instantiate(_knigth[1], _PointRespawn[1].position, Quaternion.identity);
                             _knigth[1].SetActive(true);
@@ -45,7 +47,7 @@ namespace Ziggurat
                     }; break;
                 case RespawnGate.Blue:
                     {
-                        if (_timebetweenspawnBlue <= 0)
+                        if (_timebetweenspawnBlue <= 0 && _stopRespawn == false)
                         {
                             Instantiate(_knigth[2], _PointRespawn[2].position, Quaternion.identity);
                             _knigth[2].SetActive(true);

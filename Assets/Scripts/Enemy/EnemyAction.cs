@@ -1,25 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
 namespace Ziggurat
 {
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyAction : KnigthComponent
     {
-        NavMeshAgent _agent;
-        [SerializeField] private Transform[] _knigth;
-        [SerializeField] private List<Transform> _targets;
-        public KnigthType knigthType;
-
-        protected float valueX;
-        private float _chaseRange = 20f;
-        private int _id;
+        UnitEnvironment _unitEnvironment;
 
         private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
             UnitEnvironment._animator = GetComponent<Animator>();
+            EventManager._onSetDamage += SetDamage;
 
             StartCoroutine(MoveKnight(_id));
         }
@@ -47,23 +40,52 @@ namespace Ziggurat
                 case KnigthType.Red:
                     {
                         Movement();
+                        Attack();
                     }; break;
                 case KnigthType.Green:
                     {
                         Movement();
+                        Attack();
                     }; break;
                 case KnigthType.Blue:
                     {
                         Movement();
+                        Attack();
                     }; break;
             }
         }
 
         public void Movement()
         {
-            float distance = Vector3.Distance(transform.position, _knigth[1].position);
-            float distance2 = Vector3.Distance(transform.position, _knigth[2].position);
-            if (distance < _chaseRange || distance2 < _chaseRange) _agent.SetDestination(_knigth[Random.Range(1, 2)].position);
+            float distance = Vector3.Distance(transform.position, _knigth[0].position);
+            float distance2 = Vector3.Distance(transform.position, _knigth[1].position);
+            if (distance < _chaseRange || distance2 < _chaseRange) _agent.SetDestination(_knigth[Random.Range(0, 1)].position);
+        }
+
+        private void Attack()
+        {
+            Transform _target = _knigth[Random.Range(0, 1)].transform;
+            _Attackdistance = Vector3.Distance(transform.position, _target.transform.position);
+
+            if (_Attackdistance < _attackRange)
+            {
+                UnitEnvironment.Moving(0);
+                UnitEnvironment.FastAttack();
+            }
+        }
+
+        private void SetDamage()
+        {
+            _health--;
+            Debug.Log(_health);
+
+            if (_health <= 0)
+            {
+                result = "Die";
+                _unitEnvironment.Die(result);
+                _unitEnvironment.AnimationEventEnd(result);
+
+            }
         }
     }
 }

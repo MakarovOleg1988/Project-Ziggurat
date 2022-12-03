@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+namespace Ziggurat
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UIController : MonoBehaviour
     {
-        
-    }
+        KnigthComponent _knigthComponent;
+        [SerializeField] public Slider _sliderHPBar;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            EventManager._onShowHPBar += ShowHPBar;
+        }
+
+        private void ShowHPBar()
+        {
+            _sliderHPBar.value = _knigthComponent._health;
+        }
     }
 }
+
+

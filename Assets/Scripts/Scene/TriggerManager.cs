@@ -9,8 +9,8 @@ namespace Ziggurat
         {
             if (other.GetComponents<SwordComponent>() == null) return;
             {
-                EnemyAttack._health--;
-                Debug.Log("Попал");
+                EventManager.SendSetDamage();
+                EventManager.SnowHPBar();
             }
         }
     }
